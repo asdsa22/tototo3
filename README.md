@@ -1,50 +1,9 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>dlrjfgotjrgksmsqkqh</title>
-<meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="dlrjfgotjrgksmsqkqh" />
-<meta property="og:locale" content="en_US" />
-<link rel="canonical" href="https://asdsa22.github.io/dlrjfgotjrgksmsqkqh/" />
-<meta property="og:url" content="https://asdsa22.github.io/dlrjfgotjrgksmsqkqh/" />
-<meta property="og:site_name" content="dlrjfgotjrgksmsqkqh" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="dlrjfgotjrgksmsqkqh" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","headline":"dlrjfgotjrgksmsqkqh","name":"dlrjfgotjrgksmsqkqh","url":"https://asdsa22.github.io/dlrjfgotjrgksmsqkqh/"}</script>
-<!-- End Jekyll SEO tag -->
-
-    <link rel="stylesheet" href="/dlrjfgotjrgksmsqkqh/assets/css/style.css?v=fb1a1ed43a62fa015fc6c2bb28b3c6cb39636137">
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
-
-<!-- Setup Google Analytics -->
-
-
-
-<!-- You can set your favicon here -->
-<!-- link rel="shortcut icon" type="image/x-icon" href="/dlrjfgotjrgksmsqkqh/favicon.ico" -->
-
-<!-- end custom head snippets -->
-
-  </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="https://asdsa22.github.io/dlrjfgotjrgksmsqkqh/">dlrjfgotjrgksmsqkqh</a></h1>
-      
-
-      <p>빅맥 경험치계산기</p>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>레벨업 기간</title>
+  <title>빅맥 경험치계산기</title>
   <style>
     :root{
       --w: 392px;
@@ -190,7 +149,6 @@
       overflow:auto;
     }
 
-    /* ===== drawers ===== */
     .drawer{
       width:0;
       height: var(--h);
@@ -227,7 +185,6 @@
       min-height:0;
     }
 
-    /* listbox */
     .listbox{
       border:1px solid var(--line);
       border-radius:10px;
@@ -260,7 +217,6 @@
       margin-top:-2px;
     }
 
-    /* timeRow for meter */
     .timeRow{
       display:flex;
       gap:8px;
@@ -271,11 +227,9 @@
     .small{ font-size:12px; color: var(--muted); }
   </style>
 </head>
-
 <body>
   <div class="app">
 
-    <!-- LEFT DRAWER: 경험치측정기 -->
     <div class="drawer" id="meterDrawer">
       <div class="drawer-inner">
         <div class="drawer-head">
@@ -328,7 +282,7 @@
                   <input type="checkbox" id="a_mulCheck" />
                   <span style="font-size:13px;">적용</span>
                 </label>
-                <input id="a_mulPct" inputmode="numeric" style="width:90px;" disabled="" value="100" />
+                <input id="a_mulPct" inputmode="numeric" style="width:90px;" disabled value="100" />
                 <small>% (A는 나누기 적용)</small>
               </div>
             </div>
@@ -351,7 +305,6 @@
       </div>
     </div>
 
-    <!-- MAIN -->
     <div class="main">
       <div class="topbar">
         <button class="secondary" id="toggleMeterBtn">경험치측정기 ▶</button>
@@ -393,7 +346,7 @@
                 <input type="checkbox" id="mulCheck" />
                 <span style="font-size:13px;">배율 적용</span>
               </label>
-              <input id="mulPct" inputmode="decimal" style="width:90px;" disabled="" value="100" />
+              <input id="mulPct" inputmode="decimal" style="width:90px;" disabled value="100" />
               <small>%</small>
             </div>
           </div>
@@ -410,7 +363,6 @@
       </div>
     </div>
 
-    <!-- RIGHT DRAWER: 사냥터경험치란 -->
     <div class="drawer" id="drawer">
       <div class="drawer-inner">
         <div class="drawer-head">
@@ -451,32 +403,31 @@
 (function(){
   "use strict";
 
-  /* ===== XP TABLE (이미지 기준 1~139레벨) ===== */
   var XP_TO_NEXT = {
-    1: 2,          2: 6,          3: 17,         4: 37,         5: 67,
-    6: 111,        7: 169,        8: 247,        9: 344,        10: 464,
-    11: 609,       12: 783,       13: 985,       14: 1221,      15: 1491,
-    16: 1799,      17: 2145,      18: 2535,      19: 2968,      20: 3448,
-    21: 3977,      22: 4559,      23: 5193,      24: 5885,      25: 6635,
-    26: 7447,      27: 8321,      28: 9263,      29: 10272,     30: 11352,
-    31: 12505,     32: 13735,     33: 15041,     34: 16429,     35: 17899,
-    36: 19455,     37: 21097,     38: 22831,     39: 24656,     40: 26576,
-    41: 28593,     42: 30711,     43: 32931,     44: 35251,     45: 37683,
-    46: 40223,     47: 42873,     48: 45639,     49: 48520,     50: 51520,
-    51: 54641,     52: 57887,     53: 61257,     54: 64757,     55: 68387,
-    56: 72151,     57: 76049,     58: 80087,     59: 84264,     60: 106110,
-    61: 113411,    62: 121150,    63: 129351,    64: 138044,    65: 147256,
-    66: 157020,    67: 167366,    68: 178333,    69: 189959,    70: 202281,
-    71: 215349,    72: 229204,    73: 243902,    74: 259494,    75: 276042,
-    76: 293606,    77: 312258,    78: 332071,    79: 353126,    80: 375510,
-    81: 399319,    82: 424654,    83: 451632,    84: 480370,    85: 511006,
-    86: 543687,    87: 578571,    88: 616838,    89: 655680,    90: 698312,
-    91: 743970,    92: 795918,    93: 842442,    94: 901869,    95: 962553,
-    96: 1026899,   97: 1098354,   98: 1174419,   99: 1256664,   100: 1351164,
-    101: 1450249,  102: 1606624,  103: 1779646,  104: 1993203,  105: 2219985,
-    106: 2486383,  107: 2784749,  108: 3118918,  109: 3493189,  110: 3890515,
-    111: 4357377,  112: 4880262,  113: 5465893,  114: 6121801,  115: 6817898,
-    116: 7636046,  117: 8552370,  118: 9578655,  119: 10728094, 120: 11947580,
+    1: 2, 2: 6, 3: 17, 4: 37, 5: 67,
+    6: 111, 7: 169, 8: 247, 9: 344, 10: 464,
+    11: 609, 12: 783, 13: 985, 14: 1221, 15: 1491,
+    16: 1799, 17: 2145, 18: 2535, 19: 2968, 20: 3448,
+    21: 3977, 22: 4559, 23: 5193, 24: 5885, 25: 6635,
+    26: 7447, 27: 8321, 28: 9263, 29: 10272, 30: 11352,
+    31: 12505, 32: 13735, 33: 15041, 34: 16429, 35: 17899,
+    36: 19455, 37: 21097, 38: 22831, 39: 24656, 40: 26576,
+    41: 28593, 42: 30711, 43: 32931, 44: 35251, 45: 37683,
+    46: 40223, 47: 42873, 48: 45639, 49: 48520, 50: 51520,
+    51: 54641, 52: 57887, 53: 61257, 54: 64757, 55: 68387,
+    56: 72151, 57: 76049, 58: 80087, 59: 84264, 60: 106110,
+    61: 113411, 62: 121150, 63: 129351, 64: 138044, 65: 147256,
+    66: 157020, 67: 167366, 68: 178333, 69: 189959, 70: 202281,
+    71: 215349, 72: 229204, 73: 243902, 74: 259494, 75: 276042,
+    76: 293606, 77: 312258, 78: 332071, 79: 353126, 80: 375510,
+    81: 399319, 82: 424654, 83: 451632, 84: 480370, 85: 511006,
+    86: 543687, 87: 578571, 88: 616838, 89: 655680, 90: 698312,
+    91: 743970, 92: 795918, 93: 842442, 94: 901869, 95: 962553,
+    96: 1026899, 97: 1098354, 98: 1174419, 99: 1256664, 100: 1351164,
+    101: 1450249, 102: 1606624, 103: 1779646, 104: 1993203, 105: 2219985,
+    106: 2486383, 107: 2784749, 108: 3118918, 109: 3493189, 110: 3890515,
+    111: 4357377, 112: 4880262, 113: 5465893, 114: 6121801, 115: 6817898,
+    116: 7636046, 117: 8552370, 118: 9578655, 119: 10728094, 120: 11947580,
     121: 12381234, 122: 13485213, 123: 14951015, 124: 16215412, 125: 18045123,
     126: 19754512, 127: 22547852, 128: 25541512, 129: 28481215, 130: 32515121,
     131: 36754112, 132: 41541124, 133: 46112135, 134: 52715121, 135: 58145121,
@@ -489,16 +440,12 @@
   function $(id){ return document.getElementById(id); }
 
   var els = {
-    // drawers
     drawer: $("drawer"),
     toggleDrawerBtn: $("toggleDrawerBtn"),
     closeDrawerBtn: $("closeDrawerBtn"),
-
     meterDrawer: $("meterDrawer"),
     toggleMeterBtn: $("toggleMeterBtn"),
     closeMeterBtn: $("closeMeterBtn"),
-
-    // main
     curLevel: $("curLevel"),
     curPct: $("curPct"),
     targetLevel: $("targetLevel"),
@@ -509,15 +456,11 @@
     calcBtn: $("calcBtn"),
     resetBtn: $("resetBtn"),
     resultBox: $("resultBox"),
-
-    // presets drawer
     presetList: $("presetList"),
     pName: $("pName"),
     pValue: $("pValue"),
     addBtn: $("addBtn"),
     deleteBtn: $("deleteBtn"),
-
-    // meter drawer (A)
     a_curLevel: $("a_curLevel"),
     a_curPct: $("a_curPct"),
     a_startH: $("a_startH"),
@@ -613,24 +556,20 @@
     return curRemain + midSum + targetPart;
   }
 
-  /* ===== data (저장 제거: 소스 기본 + 실행 중 추가만) ===== */
   function defaultData(){
     return {
       presets: [
-            {"name": "100제 고순", "value": 800000},
-            {"name": "120제 고순", "value": 1},
-            {"name": "100제 저순", "value": 1},
-            {"name": "120제 저순", "value": 1},
-        // 여기 추가하면 항상 기본으로 뜸
+        {"name": "100제 고순", "value": 800000},
+        {"name": "120제 고순", "value": 1},
+        {"name": "100제 저순", "value": 1},
+        {"name": "120제 저순", "value": 1}
       ]
     };
   }
 
-  // 실행 중에만 유지되는 presets (새로고침하면 초기화)
   var presets = defaultData().presets.slice();
   var selectedIndex = null;
 
-  /* ===== presets UI ===== */
   function presetText(it){
     return it.name + " (" + Number(it.value).toLocaleString("ko-KR") + ")";
   }
@@ -683,7 +622,6 @@
     }
   }
 
-  /* ===== drawer open/close ===== */
   function openRight(){
     els.drawer.classList.add("open");
     els.toggleDrawerBtn.textContent = "사냥터경험치란 ◀";
@@ -710,7 +648,6 @@
     else openLeft();
   }
 
-  /* ===== main calc ===== */
   function getSelectedPresetValue(){
     if (!presets.length) throw new Error("시간당 XP(사냥터 항목)을 선택하세요.");
     var idx = Number(els.presetSelect.value);
@@ -724,7 +661,6 @@
     try{
       var curLevel = Number((els.curLevel.value || "").trim() || "0");
       var curPct = parsePctAllowBlank(els.curPct.value);
-
       var targetLevel = Number((els.targetLevel.value || "").trim() || "0");
       var targetPct = parsePctAllowBlank(els.targetPct.value);
 
@@ -765,7 +701,6 @@
     setResult("총 필요 경험치: -\n걸리는 시간: -");
   }
 
-  /* ===== meter(A) calc ===== */
   function calcA(){
     try{
       var curLevel = Number(String(els.a_curLevel.value || "").trim());
@@ -789,8 +724,6 @@
       if (needXp <= 0) throw new Error("목표가 현재보다 높아야 합니다. (레벨/목표% 확인)");
 
       var perHourRaw = (needXp / delta) * 60.0;
-
-      // A는 배율 체크 시 나누기 적용
       var mult = getMultiplier(els.a_mulCheck, els.a_mulPct);
       var shown = (mult !== null) ? (perHourRaw / mult) : perHourRaw;
 
@@ -816,7 +749,6 @@
     setAResult("시간당 얻는 경험치: -");
   }
 
-  /* ===== presets CRUD (저장 없음) ===== */
   function presetAdd(){
     var name = String(els.pName.value || "").trim();
     var valS = String(els.pValue.value || "").trim().replace(/,/g,"");
@@ -849,10 +781,8 @@
     refreshPresetList();
   }
 
-  /* ===== events ===== */
   els.toggleDrawerBtn.addEventListener("click", toggleRight);
   els.closeDrawerBtn.addEventListener("click", closeRight);
-
   els.toggleMeterBtn.addEventListener("click", toggleLeft);
   els.closeMeterBtn.addEventListener("click", closeLeft);
 
@@ -866,10 +796,8 @@
 
   els.calcBtn.addEventListener("click", calcMain);
   els.resetBtn.addEventListener("click", resetMain);
-
   els.a_calcBtn.addEventListener("click", calcA);
   els.a_resetBtn.addEventListener("click", resetA);
-
   els.addBtn.addEventListener("click", presetAdd);
   els.deleteBtn.addEventListener("click", presetDelete);
 
@@ -880,7 +808,6 @@
     }
   });
 
-  /* ===== init ===== */
   refreshPresetSelect();
   refreshPresetList();
   setResult("총 필요 경험치: -\n걸리는 시간: -");
@@ -888,12 +815,4 @@
 })();
 </script>
 </body>
-</html>
-
-
-      
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
-  </body>
 </html>
